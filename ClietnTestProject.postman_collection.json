@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "ea5d46f4-83b3-4161-ad40-2beb42961c8e",
+		"name": "ClietnTestProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8461360"
+	},
+	"item": [
+		{
+			"name": "System Module",
+			"item": [
+				{
+					"name": "GetAllStudets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8701/module/system",
+							"host": [
+								"localhost"
+							],
+							"port": "8701",
+							"path": [
+								"module",
+								"system"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByFirstName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8701/module/system/firstName/John",
+							"host": [
+								"localhost"
+							],
+							"port": "8701",
+							"path": [
+								"module",
+								"system",
+								"firstName",
+								"John"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByLastName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8701/module/system/lastName/Smith",
+							"host": [
+								"localhost"
+							],
+							"port": "8701",
+							"path": [
+								"module",
+								"system",
+								"lastName",
+								"Smith"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByEmail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8701/module/system/email/john.smith@gmail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8701",
+							"path": [
+								"module",
+								"system",
+								"email",
+								"john.smith@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewStudent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"John\",\r\n    \"lastName\":\"Smith\",\r\n    \"email\":\"john.smith@gmail.com\",\r\n    \"created\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8701/module/system",
+							"host": [
+								"localhost"
+							],
+							"port": "8701",
+							"path": [
+								"module",
+								"system"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateStudent",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"John\",\r\n    \"lastName\":\"Smith\",\r\n    \"email\":\"john.smith90@gmail.com\",\r\n    \"created\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8701/module/system/john.smith@gmail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8701",
+							"path": [
+								"module",
+								"system",
+								"john.smith@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteStudent",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8701/module/system/john.smith90@gmail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8701",
+							"path": [
+								"module",
+								"system",
+								"john.smith90@gmail.com"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "test feign connection to system module",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
