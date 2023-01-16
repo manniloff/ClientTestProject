@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/test")
 public class TestController {
     @GetMapping(value = {"", "/"}, produces = "application/json")
-    public ResponseEntity<?> testConnection() {
+    public ResponseEntity<String> testConnection() {
         return ResponseEntity.ok("Core Connected");
     }
 }
