@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: DEV-1
+      author: rv
+      changes:
+        - createTable:
+            tableName: student
+            remark: student-info
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: student_pk
+                    nullable: false
+              - column:
+                  name: firstName
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastName
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(75)
+                  constraints:
+                    nullable: false
+                    uniqueConstraintName: true
+              - column:
+                  name: created
+                  type: DATETIME
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
