@@ -10,6 +10,7 @@ import test.client.system.model.Student;
 import test.client.system.repository.StudentRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -20,7 +21,7 @@ public class StudentController {
     private final StudentRepository studentRepository;
 
     @GetMapping(value = {"", "/"}, produces = "application/json")
-    ResponseEntity<?> getAll() {
+    ResponseEntity<List<StudentDto>> getAll() {
         return ResponseEntity.ok(studentRepository.findAll()
                 .stream()
                 .map(StudentConverter.toStudentDto)
@@ -28,25 +29,25 @@ public class StudentController {
     }
 
     @GetMapping(value = "/firstName/{firstName}", produces = "application/json")
-    ResponseEntity<?> getByFirstName(@PathVariable String firstName) {
+    ResponseEntity<StudentDto> getByFirstName(@PathVariable String firstName) {
         return ResponseEntity.ok(StudentConverter.toStudentDto
                 .apply(studentRepository.findAllByFirstName(firstName)));
     }
 
     @GetMapping(value = "/lastName/{lastName}", produces = "application/json")
-    ResponseEntity<?> getByLastName(@PathVariable String lastName) {
+    ResponseEntity<StudentDto> getByLastName(@PathVariable String lastName) {
         return ResponseEntity.ok(StudentConverter.toStudentDto
                 .apply(studentRepository.findAllByLastName(lastName)));
     }
 
     @GetMapping(value = "/email/{email}", produces = "application/json")
-    ResponseEntity<?> getByEmail(@PathVariable String email) {
+    ResponseEntity<StudentDto> getByEmail(@PathVariable String email) {
         return ResponseEntity.ok(StudentConverter.toStudentDto
                 .apply(studentRepository.findByEmail(email)));
     }
 
     @PostMapping(value = {"", "/"}, produces = "application/json")
-    ResponseEntity<?> create(@RequestBody StudentDto studentDto) {
+    ResponseEntity<StudentDto> create(@RequestBody StudentDto studentDto) {
         Student student = new Student();
         student.setFirstName(studentDto.getFirstName());
         student.setLastName(studentDto.getLastName());
@@ -57,7 +58,7 @@ public class StudentController {
     }
 
     @PutMapping(value = "/{email}", produces = "application/json")
-    ResponseEntity<?> update(@RequestBody StudentDto studentDto, @PathVariable String email) {
+    ResponseEntity<String> update(@RequestBody StudentDto studentDto, @PathVariable String email) {
 
         Student student = checkStudent(email);
         if (Optional.ofNullable(student).isPresent()) {
@@ -77,7 +78,7 @@ public class StudentController {
     }
 
     @DeleteMapping(value = "/{email}", produces = "application/json")
-    ResponseEntity<?> delete(@PathVariable String email) {
+    ResponseEntity<String> delete(@PathVariable String email) {
         Student student = studentRepository.findByEmail(email);
         if (Optional.ofNullable(student).isPresent()) {
             studentRepository.deleteById(student.getId());

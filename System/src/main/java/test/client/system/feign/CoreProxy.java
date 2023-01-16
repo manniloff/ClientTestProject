@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface CoreProxy {
 
     @GetMapping(value = "/core")
-    ResponseEntity<?> testConnection();
+    ResponseEntity<String> testConnection();
 }
